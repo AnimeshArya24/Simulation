@@ -5,7 +5,9 @@
 class External
 {
 private:
-    int External_Temp{0};
+    int IN_CAN_External_Temp{0};
+    std::string OUT_CAN_AC_ECU{""};
+
 public:
     External() = default;
     External(External &&) = delete;
@@ -14,12 +16,13 @@ public:
     External &operator=(const External &) = delete;
     ~External() = default;
 
-    External(int temp):External_Temp{temp}{}
+    External(int temp):IN_CAN_External_Temp{temp}{}
 
     void Output(){
-        if(External_Temp>0 && External_Temp<60){
-            if(External_Temp>24){
-                std::cout << "AC is on and set to 24" << std::endl;
+        if(IN_CAN_External_Temp>0 && IN_CAN_External_Temp<60){
+            if(IN_CAN_External_Temp>24){
+                OUT_CAN_AC_ECU = "AC is on and set to 24";
+                std::cout << OUT_CAN_AC_ECU << std::endl;
                 
             }
         }

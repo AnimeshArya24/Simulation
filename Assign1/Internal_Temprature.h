@@ -5,7 +5,8 @@
 class Internal
 {
 private:
-    int Internal_temp{0};
+    int IN_CAN_Internal_temp{0};
+    std::string OUT_CAN_AC_ECU{""};
 public:
     Internal() = default;
     Internal(Internal &&) = delete;
@@ -14,12 +15,13 @@ public:
     Internal &operator=(const Internal &) = delete;
     ~Internal() = default;
 
-    Internal(int temp):Internal_temp{temp}{}
+    Internal(int temp):IN_CAN_Internal_temp{temp}{}
 
     void Output(){
-         if(Internal_temp>0 && Internal_temp<60 ){
-            if(Internal_temp>24){
-                std::cout << "AC is on and set to 24" << std::endl;
+         if(IN_CAN_Internal_temp>0 && IN_CAN_Internal_temp<60 ){
+            if(IN_CAN_Internal_temp>24){
+                OUT_CAN_AC_ECU = "AC is on and set to 24";
+                std::cout << OUT_CAN_AC_ECU << std::endl;
                 
             }
         }
